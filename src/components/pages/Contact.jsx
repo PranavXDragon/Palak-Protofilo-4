@@ -4,30 +4,58 @@ import { useState } from 'react'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    fullname: '',
+    name: '',
     email: '',
+    subject: '',
     message: ''
   })
 
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
+    setError('')
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
-    setIsSubmitted(true)
-    setTimeout(() => {
-      setFormData({ fullname: '', email: '', message: '' })
-      setIsSubmitted(false)
-    }, 2000)
+    setIsLoading(true)
+    setError('')
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message')
+      }
+
+      console.log('Message sent:', data)
+      setIsSubmitted(true)
+      setFormData({ name: '', email: '', subject: '', message: '' })
+      
+      setTimeout(() => {
+        setIsSubmitted(false)
+      }, 3000)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An error occurred')
+      console.error('Form error:', err)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
-  const isFormValid = formData.fullname && formData.email && formData.message
+  const isFormValid = formData.name && formData.email && formData.subject && formData.message
 
   return (
     <article className="contact active">
@@ -51,12 +79,13 @@ export default function Contact() {
           <div className="input-wrapper">
             <input
               type="text"
-              name="fullname"
+              name="name"
               className="form-input"
               placeholder="Full name"
               required
-              value={formData.fullname}
+              value={formData.name}
               onChange={handleChange}
+              disabled={isLoading}
             />
             <input
               type="email"
@@ -66,8 +95,19 @@ export default function Contact() {
               required
               value={formData.email}
               onChange={handleChange}
+              disabled={isLoading}
             />
           </div>
+          <input
+            type="text"
+            name="subject"
+            className="form-input"
+            placeholder="Subject"
+            required
+            value={formData.subject}
+            onChange={handleChange}
+            disabled={isLoading}
+          />
           <textarea
             name="message"
             className="form-input"
@@ -75,14 +115,16 @@ export default function Contact() {
             required
             value={formData.message}
             onChange={handleChange}
+            disabled={isLoading}
           ></textarea>
+          {error && <p className="error-message" style={{ color: 'red' }}>{error}</p>}
           <button 
             className="form-btn" 
             type="submit" 
-            disabled={!isFormValid}
+            disabled={!isFormValid || isLoading}
           >
             <ion-icon name="paper-plane"></ion-icon>
-            <span>Send Message</span>
+            <span>{isLoading ? 'Sending...' : 'Send Message'}</span>
           </button>
           {isSubmitted && <p className="submit-message">Message sent successfully!</p>}
         </form>
