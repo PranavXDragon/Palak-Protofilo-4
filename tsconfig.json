@@ -16,15 +16,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"],
-      "@/src/*": ["./src/*"],
-      "@/app/*": ["./app/*"],
-      "@/lib/*": ["./app/lib/*"],
-      "@/models/*": ["./app/models/*"],
-      "@/components/*": ["./src/components/*"]
-    },
     "plugins": [
       {
         "name": "next"
