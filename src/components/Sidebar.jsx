@@ -79,6 +79,11 @@ export default function Sidebar() {
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
           </li>
+          <li className="social-item">
+            <a href="https://www.linkedin.com/in/palak-urkude-446521350?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" className="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
         </ul>
       </div>
     </aside>
