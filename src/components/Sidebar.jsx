@@ -49,7 +49,7 @@ export default function Sidebar() {
             </div>
             <div className="contact-info">
               <p className="contact-title">Birthday</p>
-              <time dateTime="1982-06-23">June 23, 1982</time>
+              <time dateTime="2006-09-22">September 22, 2006</time>
             </div>
           </li>
           <li className="contact-item">
