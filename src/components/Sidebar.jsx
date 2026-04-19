@@ -75,7 +75,7 @@ export default function Sidebar() {
             </a>
           </li>
           <li className="social-item">
-            <a href="#" className="social-link">
+            <a href="https://www.instagram.com/palak_urkude2?igsh=cmQ2cW55c3Fla2pp" target="_blank" rel="noopener noreferrer" className="social-link">
               <ion-icon name="logo-instagram"></ion-icon>
             </a>
           </li>
