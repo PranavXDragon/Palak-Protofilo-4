@@ -1,4 +1,5 @@
 import '../src/styles/style.css'
+import Script from 'next/script'
 
 export const metadata = {
   title: "Palak's Portfolio",
@@ -15,10 +16,10 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
       </head>
       <body>
         {children}
+        <Script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" type="module" strategy="afterInteractive" />
       </body>
     </html>
   )

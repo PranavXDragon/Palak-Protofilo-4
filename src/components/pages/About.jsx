@@ -57,7 +57,7 @@ export default function About() {
         </header>
         <section className="about-text">
           <p>
-            I'm a passionate B.Tech Data Science student from Suryoday College of Engineering, Nagpur, with a strong interest in technology, problem-solving, and creating meaningful digital experiences. I enjoy turning complex data and ideas into simple, smart, and user-friendly solutions.
+            I&apos;m a passionate B.Tech Data Science student from Suryoday College of Engineering, Nagpur, with a strong interest in technology, problem-solving, and creating meaningful digital experiences. I enjoy turning complex data and ideas into simple, smart, and user-friendly solutions.
           </p>
           <p>
             My focus is on building projects that are not only functional but also clean, intuitive, and impactful. Along with data science, I explore web development and design to create solutions that are both technically strong and visually appealing.
@@ -68,7 +68,7 @@ export default function About() {
         </section>
 
         <section className="service">
-          <h3 className="h3 service-title">What i'm doing</h3>
+          <h3 className="h3 service-title">What I&apos;m doing</h3>
           <ul className="service-list">
             {services.map(service => (
               <li className="service-item" key={service.id}>
