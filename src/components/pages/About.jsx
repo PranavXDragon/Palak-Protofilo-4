@@ -67,6 +67,23 @@ export default function About() {
           </p>
         </section>
 
+        <section className="highlights">
+          <ul className="highlights-list">
+            <li className="highlights-item">
+              <h4 className="h4">Learning Journey</h4>
+              <p className="highlights-subtitle">B.Tech Student</p>
+            </li>
+            <li className="highlights-item">
+              <h4 className="h4">Projects Built</h4>
+              <p className="highlights-subtitle">4+ Projects</p>
+            </li>
+            <li className="highlights-item">
+              <h4 className="h4">Growth Mindset</h4>
+              <p className="highlights-subtitle">Always Learning</p>
+            </li>
+          </ul>
+        </section>
+
         <section className="service">
           <h3 className="h3 service-title">What I&apos;m doing</h3>
           <ul className="service-list">
